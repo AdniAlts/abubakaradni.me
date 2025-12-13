@@ -251,6 +251,20 @@
         .dark .input-underline {
             background-color: #f87171;
         }
+
+        /* Ensure mobile menu button is visible on mobile */
+        @media (max-width: 767px) {
+            #mobile-menu-toggle {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+        }
+        @media (min-width: 768px) {
+            #mobile-menu-toggle {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -260,7 +274,7 @@
     <div class="bg-grain"></div>
 
     <!-- Navigation -->
-    <nav id="main-nav" class="fixed top-0 w-full z-50 backdrop-blur-md bg-transparent transition-all duration-500">
+    <nav id="main-nav" class="fixed top-0 w-full z-[100] backdrop-blur-md bg-transparent transition-all duration-500">
         <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
             <div
                 class="flex items-center space-x-4 md:space-x-12 text-[10px] font-semibold tracking-[0.2em] uppercase text-black dark:text-white drop-shadow-lg">
@@ -286,8 +300,8 @@
                     <i class="fas fa-sun hidden dark:block text-xs"></i>
                 </button>
                 <button id="mobile-menu-toggle"
-                    class="md:hidden w-8 h-8 flex items-center justify-center text-black dark:text-white drop-shadow-lg">
-                    <i class="fas fa-bars text-sm"></i>
+                    class="block md:hidden w-10 h-10 flex items-center justify-center text-black dark:text-white drop-shadow-lg z-[60]">
+                    <i class="fas fa-bars text-lg"></i>
                 </button>
             </div>
         </div>
