@@ -1,0 +1,185 @@
+/* Soft Grain Texture */
+.bg-grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.3;
+}
+
+html.dark .bg-grain {
+    opacity: 0.15;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 10px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+    background: #404040;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+}
+
+/* Smooth Text Transition */
+.text-fade {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.text-fade.hidden-text {
+    opacity: 0;
+}
+
+/* Magnetic Button Effect Base */
+.magnetic-wrap {
+    display: inline-block;
+    position: relative;
+}
+
+/* Minimal Tilt */
+.tilt-card {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+}
+
+.tilt-card:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(2deg) scale(1.01);
+}
+
+/* Focus Glow for Inputs */
+.input-group:focus-within label {
+    color: #818cf8;
+}
+
+.input-group:focus-within .input-underline {
+    width: 100%;
+    background-color: #818cf8;
+}
+
+/* Hero Parallax */
+.hero-parallax {
+    will-change: transform;
+}
+
+/* Nav Underline */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #000000;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+html.dark .nav-link.active {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Artistic Red Streak */
+.red-streak {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(239, 68, 68, 0.4),
+            transparent);
+    top: 45%;
+    left: 0;
+    opacity: 0.6;
+}
+
+@layer base {
+    /* Override warna text autofill */
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        -webkit-text-fill-color: inherit !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    /* SOLUSI BLUE BOX (Updated) */
+    /* Light Mode */
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px #fafafa inset !important;
+    }
+
+    /* Dark Mode */
+    .dark input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important;
+        -webkit-text-fill-color: #fff !important;
+    }
+}
+
+.input-underline {
+    background-color: #ef4444;
+}
+
+.dark .input-underline {
+    background-color: #f87171;
+}
+
+/* Ensure mobile menu button is visible on mobile */
+@media (max-width: 767px) {
+    #mobile-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+@media (min-width: 768px) {
+    #mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Landscape mode fixes for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    #hero {
+        min-height: 100vh;
+        height: auto;
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+    }
+    #hero h1 {
+        font-size: 2.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    #hero .mt-6 {
+        margin-top: 1rem !important;
+    }
+}
