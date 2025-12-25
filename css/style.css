@@ -227,5 +227,193 @@ html.dark .nav-link.active {
         will-change: auto;
     }
 }
-    cursor: grabbing;
+
+/* ============================================
+   EDITORIAL MAGAZINE PROJECTS SECTION
+   ============================================ */
+
+/* Section base - support light/dark mode */
+.editorial-projects {
+    background: #ffffff;
+}
+
+html.dark .editorial-projects {
+    background: #050505;
+}
+
+/* Editorial reveal animations - optimized for performance */
+.editorial-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out,
+                transform 0.6s ease-out;
+    transition-delay: var(--reveal-delay, 0s);
+}
+
+.editorial-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image cluster container */
+.image-cluster {
+    perspective: 1000px;
+}
+
+/* Cluster image base styles - optimized for performance */
+.cluster-img {
+    transition: transform 0.4s ease-out,
+                box-shadow 0.4s ease-out;
+    will-change: transform;
+}
+
+.cluster-img img.img-inner,
+.cluster-img .img-inner {
+    transition: transform 0.4s ease-out,
+                filter 0.4s ease-out;
+    will-change: transform;
+}
+
+/* Hover effects on image cluster - simplified */
+.editorial-project:hover .cluster-img img.img-inner,
+.editorial-project:hover .cluster-img .img-inner {
+    filter: brightness(1.05);
+}
+
+.editorial-project:hover .main-img {
+    transform: scale(1.01);
+}
+
+.editorial-project:hover .support-img-1 {
+    transform: scale(1.02) translateY(-5px);
+}
+
+.editorial-project:hover .support-img-2 {
+    transform: scale(1.02) translateX(3px);
+}
+
+/* Individual image hover for subtle movement */
+.cluster-img:hover img.img-inner,
+.cluster-img:hover .img-inner {
+    transform: scale(1.03);
+}
+
+/* Editorial CTA link styles */
+.editorial-cta {
+    position: relative;
+}
+
+.editorial-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s ease-out;
+}
+
+.editorial-cta:hover::before {
+    width: calc(100% - 80px);
+}
+
+/* Remove staggered animation delays - simplified for performance */
+.cluster-img {
+    transition-delay: 0s;
+}
+
+/* Elegant serif typography enhancements */
+.font-serif {
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    text-rendering: optimizeLegibility;
+}
+
+/* Project article separator line animation - optimized */
+.editorial-project {
+    position: relative;
+}
+
+.editorial-project::after {
+    content: '';
+    position: absolute;
+    bottom: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(115,115,115,0.3), transparent);
+    transition: width 0.8s ease-out;
+}
+
+html.dark .editorial-project::after {
+    background: linear-gradient(90deg, transparent, #333, transparent);
+}
+
+.editorial-project.revealed::after {
+    width: 60%;
+}
+
+.editorial-project:last-of-type::after {
+    display: none;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1023px) {
+    /* Keep asymmetrical positioning for mobile zig-zag */
+    .image-cluster {
+        height: 350px !important;
+    }
+    
+    /* Project with images on left (Row A) - keep left */
+    .editorial-project:nth-child(odd) .cluster-img.support-img-2 {
+        left: 0 !important;
+        right: auto !important;
+    }
+    
+    .editorial-project:nth-child(odd) .cluster-img.support-img-3 {
+        right: 0 !important;
+        left: auto !important;
+    }
+    
+    /* Project with images on right (Row B) - keep right */
+    .editorial-project:nth-child(even) .cluster-img.support-img-2 {
+        right: 0 !important;
+        left: auto !important;
+    }
+    
+    .editorial-project:nth-child(even) .cluster-img.support-img-3 {
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .image-cluster {
+        height: 280px !important;
+    }
+    
+    .editorial-project::after {
+        bottom: -2rem;
+    }
+    
+    .editorial-project.revealed::after {
+        width: 80%;
+    }
+}
+
+/* Smooth scroll offset for section */
+#projects {
+    scroll-margin-top: 60px;
+}
+
+/* Remove float animations for better performance */
+
+/* Support light/dark mode properly */
+html:not(.dark) .editorial-projects {
+    background: #ffffff !important;
+}
+
+html.dark .editorial-projects {
+    background: #050505 !important;
 }

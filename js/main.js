@@ -26,11 +26,11 @@ const translations = {
         projects_subtitle: "A collection of projects I've crafted.",
         view_all: "View All Archives",
         proj1_desc:
-            "A clean, distraction-free shopping experience focusing on product photography and typography.",
+            "An intelligent task management application that helps you organize, prioritize, and never miss a deadline.",
         proj2_desc:
-            "Productivity application with drag-and-drop functionality and calm color schemes.",
-        proj3_desc:
-            "Minimalist weather dashboard providing essential data with beautiful atmospheric gradients.",
+            "---",
+        proj2_desc:
+            "---",
         contact_title: "Get in Touch",
         contact_subtitle:
             "Have a project in mind? Let's create something beautiful.",
@@ -68,9 +68,9 @@ const translations = {
         proj1_desc:
             "Pengalaman belanja yang bersih dan bebas gangguan, berfokus pada fotografi produk dan tipografi.",
         proj2_desc:
-            "Aplikasi produktivitas dengan fungsionalitas drag-and-drop dan skema warna yang tenang.",
+            "---",
         proj3_desc:
-            "Dasbor cuaca minimalis yang menyediakan data penting dengan gradasi atmosfer yang indah.",
+            "---",
         contact_title: "Hubungi Saya",
         contact_subtitle: "Punya ide projek? Mari buat sesuatu yang indah.",
         form_name: "Nama",
@@ -327,6 +327,39 @@ function initScrollAnimations() {
     });
 }
 
+// Editorial Projects Scroll Reveal Animation - Optimized
+function initEditorialScrollAnimations() {
+    const editorialElements = document.querySelectorAll('.editorial-reveal');
+    
+    if (editorialElements.length === 0) return;
+    
+    const editorialObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Simple reveal without heavy delays
+                    entry.target.classList.add('revealed');
+                    editorialObserver.unobserve(entry.target);
+                }
+            });
+        },
+        { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        }
+    );
+
+    editorialElements.forEach((el) => {
+        editorialObserver.observe(el);
+    });
+}
+
+// Simplified parallax - removed for performance
+function initEditorialParallax() {
+    // Disabled for better performance
+    return;
+}
+
 // Active Section Highlighting
 function initNavHighlighting() {
     const sections = document.querySelectorAll("section[id]");
@@ -493,6 +526,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLanguage(currentLang);
     initParallax();
     initScrollAnimations();
+    initEditorialScrollAnimations();
+    initEditorialParallax();
     initNavHighlighting();
     initTechSlider();
 
