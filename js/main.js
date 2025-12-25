@@ -66,7 +66,7 @@ const translations = {
         projects_subtitle: "Koleksi projek yang telah saya buat.",
         view_all: "Lihat Semua Arsip",
         proj1_desc:
-            "Pengalaman belanja yang bersih dan bebas gangguan, berfokus pada fotografi produk dan tipografi.",
+            "Aplikasi manajemen tugas cerdas yang membantu Anda mengatur, memprioritaskan, dan tidak pernah melewatkan tenggat waktu.",
         proj2_desc:
             "---",
         proj3_desc:
